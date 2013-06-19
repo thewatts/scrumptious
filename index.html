@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scrumptious</title>
+  <link rel="stylesheet" href="/css/vendor/foundation.css">
+  <link rel="stylesheet" href="/css/vendor/general_foundicons.css">
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/vendor/handlebars.js"></script>
+  <script src="/js/vendor/ember.js"></script>
+  <script src="/js/vendor/ember-data.js"></script>
+  <script src="/js/vendor/localstorage_adapter.js"></script>
+</head>
+<body>
+  <script type="text/x-handlebars">
+    <nav class="top-bar">
+      <ul>
+        <li class="name">
+          <h1>{{#linkTo 'index'}}Scrumptious{{/linkTo}}</h1>
+        </li>
+        <li>
+          {{#linkTo 'bookmarks'}}Bookmarks{{/linkTo}}
+        </li>
+      </ul>
+    </nav>
+
+    {{outlet}}
+  </script>
+</body>
+</html>
