@@ -44,12 +44,14 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="bookmarks">
-    <h2>All My Bookmarks</h2>
+    {{partial "bookmarkControls"}}
+    <h2>You have {{controller.length}} Bookmarks</h2>
     <table class="twelve columns">
       <thead>
         <tr>
           <th>Title</th>
           <th>URL</th>
+          <th>Favorite?</th>
         </tr>
       </thead>
       <tbody>
@@ -57,6 +59,7 @@
           <tr>
             <td>{{ title }}</td>
             <td>{{ url }}</td>
+            <td>{{ view Ember.Checkbox checkedBinding="favorite" }}</td>
           </tr>
         {{ else }}
           <tr><td>Aww snap! There are currently no bookmarks!</td></tr>
@@ -67,6 +70,14 @@
     {{#linkTo "bookmarks.new"}}Add New Bookmark{{/linkTo}}
 
     {{outlet}}
+  </script>
+  <script type="text/x-handlebars" data-template-name="bookmarkControls">
+    <dl class="sub-nav" style="float: right; margin-top: 1em;">
+      <dt {{bindAttr class="sortAscending:foundicon-down-arrow:foundicon-up-arrow"}}Sort By:</dt>
+      <dd><a {{action pushSort 'name'}}>Name</a></dd>
+      <dd><a {{action pushSort 'title'}}>Title</a></dd>
+      <dd><a {{action pushSort 'isFavorite'}}>Favorite</a></dd>
+    </dl>
   </script>
 
   <script type="text/x-handlebars" data-template-name="bookmarks/new">
