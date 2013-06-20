@@ -6,5 +6,15 @@ App.BookmarksController = Ember.ArrayController.extend({
       this.set("sortProperties", [ attribute ]);
       this.set("sortAscending", true);
     }
-  }
+  },
+
+  favorites: function() {
+    return this.filterProperty("favorite", true);
+  }.property("@each.favorite"),
+
+  regular: function() {
+    return this.filterProperty("favorite", false);
+  }.property("@each.favorite")
+
+
 });

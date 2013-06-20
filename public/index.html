@@ -55,7 +55,28 @@
         </tr>
       </thead>
       <tbody>
-        {{#each controller}}
+        {{#each controller.favorites}}
+          <tr>
+            <td>{{ title }}</td>
+            <td>{{ url }}</td>
+            <td>{{ view Ember.Checkbox checkedBinding="favorite" }}</td>
+          </tr>
+        {{ else }}
+          <tr><td>Aww snap! There are currently no bookmarks!</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <table class="twelve columns">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>URL</th>
+          <th>Favorite?</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each controller.regular}}
           <tr>
             <td>{{ title }}</td>
             <td>{{ url }}</td>
@@ -71,7 +92,7 @@
 
     {{outlet}}
   </script>
-  <script type="text/x-handlebars" data-template-name="bookmarkControls">
+  <script type="text/x-handlebars" data-template-name="_bookmarkControls">
     <dl class="sub-nav" style="float: right; margin-top: 1em;">
       <dt {{bindAttr class="sortAscending:foundicon-down-arrow:foundicon-up-arrow"}}Sort By:</dt>
       <dd><a {{action pushSort 'name'}}>Name</a></dd>
